@@ -30,3 +30,11 @@
 * Login test
 	sudo vi /etc/hosts
 	183.91.14.138 api-test1.mobio.vn
+
+=============================================
+* Docs TaiLieu
+    - install node js
+    - Install package apidoc
+        npm init
+        sudo npm install -g apidoc@0.20.1
+
