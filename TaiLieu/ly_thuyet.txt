@@ -1,0 +1,26 @@
+- PROXY là sợi dây liên kết giữa người truy cập internet và Internet, dùng để chuyển tiếp thông tin và kiểm soát sự an
+toàn cho người dùng. Có IP riêng và 1 cổng cố định
+- Máy chủ Proxy:
+    + Quản lý và kiểm soát số lượng truy cập vào internet
+    + Tiết kiệm băng thông sử dụng được
+    + Cải thiện và tối ưu tốc độ truy cập Internet trên các thiết bị
+    + Bảo mật riêng tư quyền truy cập Internet
+    + Tiếp cận, truy cập những nguồn dữ liệu bị chặn
+
+- Băng thông là được sử dụng để truyền tải dữ liệu có sẵn trong 1 giây. Cũng có thể hiểu là TỐC ĐỘ TRUYỀN TẢI DỮ LIỆU
+TRONG 1 ĐƯỜNG TRUYỀN
+    + Mô tả dữ liệu lớn nhất mà người truy cập có thể tải xuống hoặc đăng lên giữa các website trên máy tính trong 1
+    thời gian nhất định
+    + Băng thông được đo bằng đơn vị BIT TRÊN GIÂY (bps). Trên máy tính hiện nay thì tốc độ băng thông lên tới hàng
+      triệu bit trên giây (Mbps) hay thậm chí hàng tỷ bit trên giây (Gbps)
+
+- Firewall là hệ thống an ninh mạng, sử dụng quy tắc để kiểm soát traffic vào ra khỏi hệ thống
+    + Tường lửa hoạt động như 1 rào chắn giữa mạng an toàn và mạng ko an toàn
+    + Bất kì máy tính nào kết nối internet cũng cần có firewall
+    + Bảo mật IP
+    + Sử dụng Rule để làm việc với kết nối tốt và loại bỏ kết nối xấu
+
+- VPN (Vitual Private Network) nghĩa là mạng riêng ảo
+    + Cho phép user thiết lập riêng 1 mạng ảo vs 1 mạng khác trên internet
+    + SỬ dụng để truy cập các trang web hạn chế về mặt địa lý
+    + Bật VPN sẽ kết nối mạng cục bộ, toàn bộ lưu lượng mạng lại luân chuyển qua kết nối an toàn VPN
