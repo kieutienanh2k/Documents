@@ -38,3 +38,8 @@
         npm init
         sudo npm install -g apidoc@0.20.1
 
+=============================================
+* Address call elasticsearch
+    192.168.5.151:9200/mobio-product-bank/_search
+    elasticsearch.mobio.dev:9200/mobio-product-bank/_search
+
