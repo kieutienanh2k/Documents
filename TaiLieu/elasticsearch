@@ -1,0 +1,26 @@
+
+=============================================
+* Address call elasticsearch
+    192.168.5.151:9200/mobio-product-bank/_search
+    elasticsearch.mobio.dev:9200/mobio-product-bank/_search
+
+=============================================
+* Run index
+    - remove index if existed
+    call api method DELETE
+    - scale pod monstache 0
+    - xóa dữ liệu index 2 bảng monstache, directreads
+    - chạy script tạo index
+    - tạo sản phẩm (nếu có)
+    - chạy script tạo alias
+
+
+==============================================
+- Xóa Index
+    DELETE elasticsearch.mobio.dev:9200/mobio-product-bank
+
+- Lấy Data Filter
+    GET elasticsearch.mobio.dev:9200/mobio-product-bank/_search
+
+- Lấy Mapping
+    GET elasticsearch.mobio.dev:9200/mobio-product-bank
