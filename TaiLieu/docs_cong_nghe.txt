@@ -1,0 +1,8 @@
+====================================
+* Run sh
+    - tạo file .sh
+    - cd vào danh mục chứa file .sh
+    - add quyền (VD: chmod +x test.sh)
+    - bash test.sh
+
+=====================================
