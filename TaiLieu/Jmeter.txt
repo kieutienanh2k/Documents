@@ -1,0 +1,87 @@
+JMETER
+
+- Jmeter là công cụ sử dụng để đo độ tải và performance của đối tượng
+- Giải quyết được vấn đề:
+    + Web có thể chịu bao nhiêu lượt truy cập/thao tác liên tục cùng lúc
+    + Để đáp ứng số lượng X người sử dụng, thì cần phân phối họ truy cập trong bao lâu?
+      Như thế nào để web vẫn hoạt động bình thường
+    + Thời gian response dữ liệu của server tới từng mức tải người dùng
+    +
+- Cách hoạt động:
+    + Start
+    + Create requests to target server and simulates a number of users
+    + Server responds
+    + Jmeter SAves all responses
+    + Jmeter gathers Data calculate statistical info
+    + End
+    + Report
+
+    ==> Jmeter thực hiện giả lập của các user khi request tới cùng 1 máy chủ đồng thời nhận và xử lý những phản hồi
+    được gửi tới máy chủ. Jmeter mang đến những kết quả báo cáo hiệu suất dưới hình thức biểu đồ trực quan nên
+    rất dễ hiểu.
+    + Các web server đều có thể được tải xuống 1 dung lượng lớn. Trong khi tải trọng của nó vượt giới hạn thì web server
+    sẽ thực hiện phản hồi chậm thao ra lỗi. Mục đích là để tìm ra các độ tải lớn mà các web server có thể thực hiện xử lý
+
+
+- Ưu điểm:
+    + Mã nguồn mở
+    + Giao diện dễ sử dụng
+    + Nền tảng độc lập nên có thể chạy trên nhiều nền tảng khác nhau
+    + JMeter cho mô phỏng cùng thời điểm với nhiều sampler cùng các chức năng khác nhau dựa trên nhiều các
+     nhóm hoạt động khác nhau.
+    + Hiển thị kết quả test ở nhiều định dạng khác nhau: biểu đồ, tree,...
+    + Dễ cài đặt
+    + Có thể mở rộng: viết kịch bản test --> sử dụng Jmeter sẽ hỗ trợ các plugin trực quan
+    + Jmeter support nhiều chiến lược test: Distributed Testing, Load Testing và Functional Testing.
+        * Distributed Testing: điều khiển nhiều client cùng request đến 1 server (tức là cho phép ngồi 1 chỗ nhưng có
+            thể điều khiển nhiều "client side" cùng gửi request đến server)
+            VD: Thay cho việc tạo 5 máy tính, setup giống nhau rồi done 1000 request
+        * Load Testing: xác định đảm bảo các chức năng hê thống thích hợp với nhiều nhất các workload
+        * Functional Testing: xác minh hệ thống hoạt động theo đúng các yêu cầu nghiệp vụ, thông qua 1 số tài liệu gọi
+            là đặc tả yêu cầu được phát triển nhằm hướng dẫn kiểm tra ứng dụng chính xác hơn.
+
+    + Hỗ trợ nhiều giao thức: JDBC, LDAP,  HTTP, SOAP, JMS và FTP đồng thời cũng đánh giá được hiệu năng của máy chủ
+    + Record & Playback: là tính năng giúp ghi lại các hoạt động của user trên trình duyệt,
+      đồng thời đưa ra mô phỏng trong 1 ứng dụng web sử dụng Jmeter
+    + Jmeter có thể tích hộp được với Bean Shell và Selenium nhằm thực hiện công việc test auto
+
+- Nhược điểm:
+    + Tốn bộ nhớ
+    + Không phù hợp với máy tính để bàn
+    + Thiếu support cho ngôn ngữ javascript: vì ko phải là trình duyệt nên không thể chạy cho JavaScript của ứng dụng
+    Web , và cũng hạn chế hỗ trợ xử lý JavaScript hoặc Ajax làm ảnh hưởng đến độ chính xác của mô phỏng
+
+
+- Cách sử dụng:
+    - Cài Java default, java 11:
+        + sudo apt install default-jre
+        + java -version
+    - Tải zip jmeter version 5.5 và giải nén:
+        + https://jmeter.apache.org/download_jmeter.cgi
+        + https://dlcdn.apache.org//jmeter/binaries/apache-jmeter-5.5.zip
+    - Sau khi giải nén
+        + cd /apache-jmeter-5.5/bin
+        + Nhập ./jmeter
+
+    - Thông tin cần nhập:
+        + Right click "Test Plan" --> Thread (User) --> Thread group
+        + Nhập:
+            * Number of Threads (users): số lượng user giả lập request (VD: 100)
+            * Ramp-up Period (in seconds): thời gian gửi lượng user vào trang web (VD: 10)
+            * Loop count: số lần lặp (VD: 2)
+            ==> Dịch: gửi 100 users vào trang trong vòng 10 giây, số lần lặp là 2
+            <==>gửi 200 users vào trang trong vòng 20 giây, mỗi giây sẽ gửi vào 10 users
+            <==> 100 users request trong 10s, mỗi user request 2 lần
+        + Thread group --> Add --> Sampler --> HTTP Request
+        + Nhập:
+            * Tên request
+            * Protocol: http/https
+            * Server Name or IP: api-test1.mobio.vn
+            * Method: POST
+            * Path: bao gồm cả params
+            * Request Body: Body data
+            * Header: Sampler --> Add --> Config Element --> HTTP Header Manager
+
+        + Report kết quả
+            * Thread group --> Add --> Listener --> View Result Tree/View Result in Table
+
