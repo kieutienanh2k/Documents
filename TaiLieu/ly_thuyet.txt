@@ -24,3 +24,9 @@ TRONG 1 ĐƯỜNG TRUYỀN
     + Cho phép user thiết lập riêng 1 mạng ảo vs 1 mạng khác trên internet
     + SỬ dụng để truy cập các trang web hạn chế về mặt địa lý
     + Bật VPN sẽ kết nối mạng cục bộ, toàn bộ lưu lượng mạng lại luân chuyển qua kết nối an toàn VPN
+
+=======================================
+- IOPS(In/Output operation per Second): số lượng chuyến đi thực hiện trong 1 khoảng thời gian, thông số càng cao thì tốc
+độ xử lý càng nhanh
+- Throughput: Số hàng chuyển đi trong 1 khoảng thời gian
+- Latency: Độ trễ trung bình trong tất cả các chuyến đi trong 1 khoảng thời gian đã thực hiện
