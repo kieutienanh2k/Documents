@@ -25,8 +25,117 @@ TRONG 1 ĐƯỜNG TRUYỀN
     + SỬ dụng để truy cập các trang web hạn chế về mặt địa lý
     + Bật VPN sẽ kết nối mạng cục bộ, toàn bộ lưu lượng mạng lại luân chuyển qua kết nối an toàn VPN
 
+- nginx:
+    - Là ứng dụng web server
+    - Theo truyền thống thì khi gửi request mở 1 trang web, trình duyệt sẽ liên lạc với máy chủ của trang web đó. Sau
+    đó, máy chủ tìm kiếm các file đc request cho trang và gửi nó đến trình duyệt. Là loại request đơn giản nhất
+    - Nhưng Nginx ko làm theo cách đó, Nginx thực hiện với kiến trúc hướng sự kiện ko đồng bộ.
+    - Tức là các luồng tương tự được quản lý theo worker process
+    - Mỗi worker process chứa các đơn vị nhỏ hơn gọi là worker connection.
+    - Toàn bộ các đơn vị này sau đó chịu trách nhiệm xử lý các luồng yêu cầu.
+    - Worker connection cung cấp các yêu cầu cho worker process, cũng sẽ gửi nó đến master process.
+    - Cuối cùng, master process cung cấp kết quả của những yêu cầu đó
+    (1 worker connection có thể xử lý tới 1024 request tương tự ==> Nginx có thể xử lý hàng ngàn yêu cầu mà ko gặp bất
+    kì khó khăn nào)
+
+- Apache:
+    - Là web server dùng để thiết lập kết nối giữa server và trình duyêt người dùng (chorme, FireFox,...) rồi chuyển
+    file tới và lui giữa chúng (cấu trúc 2 chiều dạng client-server).
+    - Client truy cập trang web --> trình duyệt sẽ gửi request lên server --> Apache trả về kết quả với tất cả các file
+    cấu thành nên trang web (hình ảnh, chữ,...).
+    - Server và Client giao tiếp với nhau qua giao thức HTTP và Apache chịu trách nhiệm cho việc đảm bảo tiến trình này
+    diễn ra mượt mà và bảo mật giữa 2 máy
+
+==> Đối với những doanh nghiệp vừa và nhỏ, Apache hiệu quả và dễ cấu hình hơn
+
+- Microservice
+    + Là 1 kiến trúc phần mềm. Các module trong phần mềm này được chia thành các service rất nhỏ (microservice).
+    + Mỗi service sẽ được đặt trên 1 server riêng --> dễ dàng để nâng cấp và scale ứng dụng
+
 =======================================
 - IOPS(In/Output operation per Second): số lượng chuyến đi thực hiện trong 1 khoảng thời gian, thông số càng cao thì tốc
 độ xử lý càng nhanh
 - Throughput: Số hàng chuyển đi trong 1 khoảng thời gian
 - Latency: Độ trễ trung bình trong tất cả các chuyến đi trong 1 khoảng thời gian đã thực hiện
+
+========================================
+* Kubernetes (k8s) là nền tảng mã nguồn mở giúp tự động việc mở rộng, quản lí, triển khai ứng dụng dưới dạng Container,
+nền tảng này loại bỏ được nhiều quy trình thủ công về việc mở rộng và triển khai
+- Khi nào nên sử dụng?
+    + Các công ty lớn có nhu cầu mở rộng hệ thống nhanh chóng
+    + Các dự án cần chạy nhiều hơn 5 Container cùng loại cho 1 dịch vụ
+    + Các công ty khởi nghiệp chịu đầu tư vào công nghệ để dễ dàng mở rộng hệ thống về sau
+
+- Tại sao lại cần thiết:
+    + Khi thực sự chạy các container trong production, 1 người có thể tạo hàng chục, hàng nghìn container theo thời gian
+    Những container này cần được triển khai(trên nhiều server host), quản lí, kết nối và cập nhật và nếu thực hiện
+    công việc này 1 cách thủ công thì sẽ cần cả nhóm chỉ để dành riêng cho việc này.
+    + Trong môi trường Production , việc quản lý hệ thống chạy bằng container chỉ sử dụng docker là rất khó khăn
+
+- Giải quyết vấn đề:
+    + Việc quản lý hàng loạt docker host
+    + Container scheduling
+    + Rolling update
+    + Scaling/AutoScaling
+    + Monitor Vòng đời và tình trạng sống chết của container
+    + Self-hearing trong trường hợp có lỗi xảy ra (Có khả năng phát hiện và tự correct lỗi)
+    + Service discovery
+    + Load balancing
+    + Quản lý data, work node, log
+    + Infrastructure as Code,
+    + Sự liên kết và mở rộng với các hệ thống khác
+
+- Đặc điểm nổi bật:
+    + Môi trường Production, bạn cần quản lý Container chạy ứng dụng và bảo đảm ko có thời gian downtime(thời gian mà
+    user ko truy cập được trang web). Đó là lý do tại sao nên sử dụng kubernetes. Nền tảng này cung cấp Framework chạy
+    trên hệ thống phân tán mạnh mẽ, chúng có tác dụng nhân rông và chuyển đổi cho ứng dụng
+
+    + Cân bằng tải và Service discovery:
+        K8s chỉ ra 1 container sử dụng IP hoặc DNS của riêng nó. Nếu lượng user truy
+        cập quá nhiều, K8s sẽ tự dộng cân bằng tải và phân phối lưu lượng để việc triển khai ổn định hơn.
+    + Điều chỉnh bộ nhớ (Storage orchestration):
+        K8s tự động liên kết hệ thống lưu trữ mà chúng ta có thể lựa chọn
+        Người dùng có thể tự điều chỉnh bộ nhớ cho phù hợp với nhu cầu và mục đích sử dụng mà mình cần
+    + Tự động rollout và rollback
+        Thiết lập trạng thái cho mỗi Container, bằng cách dùng K8s để thay thế trạng thái hiện tại thành trạng thái
+        mong muốn với tốc độ được kiểm soát (VD: Xóa Container sẵn có, tạo 1 container khác)
+    + Automatic bin packing - Đóng gói tự động:
+        Bằng cách cung cấp cho K8s cụm CLuster Bode để dùng cho tác vụ trong Container, bạn sẽ cho K8s biết có bao nhiêu
+        CPU, Ram có thể dùng, Framework này sẽ tự động lắp các Node để tối ưu nguồn tài nguyên mà chúng ta cung cấp
+    + Tự phục hồi
+        K8s có khả năng tự động khởi động lại các Container bị lỗi. Trong trường hợp chúng ta kiểm tra và không thấy
+        Container đó phản hồi, nó sẽ tự động thay thế hoặc loại bỏ Container đó. Sau đó, nền tảng này sẽ gửi thông tin
+        cho user khi Container đã trở về trạng thái khả dụng
+    + Bảo mật và quản lý cầu hình
+        Với K8s chúng ta dễ dàng quản lý hay lưu trữ thông tin cần phải bảo mật cao như: SHH key, OAth token, mật khẩu,.
+        Ta có thể triển khai các ứng dụng, cập nhật thông tin cần phải bảo mật cao mà không phải xây dụng hay cấu hình
+        lại Container
+
+- Một số khái niệm cơ bản trong k8s:
+    + Master Node: là Server điều khiển các máy Worker chạy ứng dụng. Gồm 4 thành phần chính:
+        * Kubernetes API Server: giúp các thành phần khác liên lạc với nhau. Các ứng dụng call API này
+        * Scheduler: là tiến hành lập lịch trình triển khai các ứng dụng.(VD:Các ứng dụng được đặt vào Worker nào để chạy,..)
+        * Controller Manager: quản lý worker, kiểm tra worker sống hay chết và đảm nhận việc nhân bản ứng dụng
+        * Etcd: Cơ sở dữ liệu của K8s. Tất cả thông tin của K8s đề sẽ được lưu trữ cố định vào Etcd.
+
+    + Worker Node: là Server chạy ứng dụng trên đó. Gồm 3 thành phần chính:
+        * Container Runtime: giúp chạy các ứng dụng trong K8s dưới dạng Container. Thông thường sử dụng Docker.
+        * Kubelet: Là thành phần giao tiếp vs K8s API Server và chịu trách nhiệm quản lý các Container trong K8s
+        * K8s Service Proxy: phân tải giữa các ứng dụng
+
+    * Kubectl: là 1 trong những công cụ cấu hình dòng lệnh cho K8s. Cho phép đẩy các ứng dụng deploy vào cụm K8s. Đồng
+    thời cho phép các admin có thể quản trị được các cụm K8s.
+
+    * Pod: chứa 1 hoặc nhiều Container, nơi mà ứng dụng chạy trong đó. Pob còn là tiến trình nằm trên các Worker Node.
+
+    * Image: là phần mềm ứng dụng đã được gọi lại thành 1 chương trình có thể chạy dưới dạng Container. Các Pod sẽ tiến
+    hành sử dụng các Image để chạy
+
+    * Deployment: là cách thức giúp triển khai, cập nhật, quản trị các Pod trở nên dễ dàng, thuận tiện hơn
+
+    * Replication Controller: điều khiển việc nên có bao nhiêu bản sao giống nhau của 1 pod. Giúp nhân bản hoặc giảm số
+    lượng Pod trong quá trình hoạt động
+
+    * Service: là phần mạng của K8s. Giúp các Pod gọi nhau ổn định hơn.
+
+    * Label: Phân loại và quản lý Pod.
