@@ -139,3 +139,27 @@ nền tảng này loại bỏ được nhiều quy trình thủ công về việ
     * Service: là phần mạng của K8s. Giúp các Pod gọi nhau ổn định hơn.
 
     * Label: Phân loại và quản lý Pod.
+
+=============================================
+* DOCKER:
+    - Tại sao docker ra đời: Việc setup và deploy lên 1 hoặc nhiều server rất vất vả, vì việc cài đặt các công cụ,
+     môi trường đến việc run được app, chưa kể việc không đồng nhất giữa các môi trường trên nhiều server khác nhau
+
+    - Docker là 1 nền tảng cho developers và sysadmin để develop, deploy và run app với container. Nó cho phép tạo
+    các môi trường (container) độc lập và tách biệt để khởi chạy và phát triển ứng dụng. Khi deploy lên bất kì server
+    nào chỉ cần run container của Docker thì app sẽ đươc khởi chạy.
+
+    - 1 số khái niệm:
+        + Docker Client là cách mà bạn tương tác vs Docker qua Command trong terminal. Docker Client sẽ sử dụng API
+        gửi lệnh tới Docker Daemon
+        + Docker Daemon: là server Docker cho request từ Docker API. Nó quản lý images, containers, network, volume
+        + Docker Volumes: là cách tốt nhất để lưu trữ dữ liệu liên tục cho việc sử dụng và tạo apps.
+        + Docker Registry: là nơi lưu trữ riêng của Docker Images. Images được push vào registry và client sẽ pull
+        imgaes từ registry.
+        + Docker Hub: là Registry lớn nhất của Docker Images(mặc định). Có thể tùn thấy images và lưu trữ images của
+        riêng bạn trên Docker Hub
+        + Docker Repository: là tập hợp các Docker Images cùng tên nhưng khác tags.
+        + Docker Networking: cho phép kết nối các container lại với nhau. Kết nối này có thể trên 1 hoặc nhiều host.
+        + Docker Swarm: để phối hợp triển khai container.
+        + Docker Services: là các container trong Production.1 service chỉ run 1 image nhưng nó mã hóa cách thức để run
+        image - sử dụng port nào, boa nhiêu bản sao container run để service có hiệu năng cần thiết và ngay lập tức.
