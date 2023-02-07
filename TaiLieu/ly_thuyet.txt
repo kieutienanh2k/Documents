@@ -163,3 +163,42 @@ nền tảng này loại bỏ được nhiều quy trình thủ công về việ
         + Docker Swarm: để phối hợp triển khai container.
         + Docker Services: là các container trong Production.1 service chỉ run 1 image nhưng nó mã hóa cách thức để run
         image - sử dụng port nào, boa nhiêu bản sao container run để service có hiệu năng cần thiết và ngay lập tức.
+
+
+================================================
+* MYSQL
+    - Là hệ quản lý cơ sở dữ liệu mã nguồn mở
+    - Lưu trữ trong bảng, sử dụng ngôn ngữ truy vấn cấu trúc SQL để truy cập dữ liệu.
+    - Thiết lập quy tắc điều chỉnh mối quan hệ giữa các bảng
+
+* MONGODB:
+    - Là cơ sở dữ liệu nguồn mở
+    - Lưu trữ dưới dạng tài liệu biểu diễn nhị phân BSON (Binary Json)
+
+* SO SÁNH TÍNH NĂNG
+    - Ưu điểm:
+        + Mysql:
+            ~ Linh hoạt và dễ dùng
+            ~ Hiệu năng cao (đáp ứng với tốc độ cao, xử lý nhiều dữ liệu)
+            ~ Độ bảo mật cao
+            ~ Sử dụng phù hợp với cấu trúc dạng bảng và hàng
+
+        + MongoDb:
+            ~ Sử dụng khi khó xác định trước cấu trúc
+            ~ Mô hình dữ liệu phong phú, linh hoạt hơn (Json)
+            ~ Dung lượng và tốc độ lưu trữ tốt hơn, mang lại hiệu quả và độ tin cậy cao hơn
+            ~ Lưu trữ dữ liệu phân cấp
+            ~ Đọc ghi dữ liệu nhanh hơn
+            ~ Tính mở rộng: cho phép thêm máy chủ và dung lượng lưu trữ khi dữ liệu tăng lên
+
+    - Nhược điểm:
+        + Mysql:
+            ~ Dung lượng hạn chế (khắc phục: chia tải ra nhiều server, tạo cache)
+            ~ Hạn chế trong việc xử lý dữ liệu lớn và phức tạp
+            ~ Dữ liệu tăng lên có thể làm tốc độ chậm so với các hệ quản trị cơ sở dữ liệu khác
+
+        + Mongodb:
+            ~ Học cú pháp truy vấn
+            ~ Không có tính ràng buộc truy vấn (tự quản lý việc xác thực dữ liệu) ---> ko hẳn là nhược điểm nếu cẩn thận
+            ~ Tốn bộ nhớ (lưu trữ dạng key-value, key bị lặp lại)
+            ~ Có thể mất dữ liệu khi chưa hoàn thành bản lưu (mất thời gian lưu từ Ram vào ổ cứng)
