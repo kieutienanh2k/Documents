@@ -163,7 +163,12 @@ nền tảng này loại bỏ được nhiều quy trình thủ công về việ
         + Docker Swarm: để phối hợp triển khai container.
         + Docker Services: là các container trong Production.1 service chỉ run 1 image nhưng nó mã hóa cách thức để run
         image - sử dụng port nào, boa nhiêu bản sao container run để service có hiệu năng cần thiết và ngay lập tức.
+        + Docker File: là file chỉ dẫn qui trình build 1 image
 
+    - Qui trình 1 hệ thống sử dụng Docker:
+        + Build: Tạo DockerFile (code lưu trữ trong này). DockerFile này được build tại 1 máy tính đã cài đặt Docker Engine
+        + Push: Sau khi có Container, thực hiện push Container lên cloud và lưu tại đó.
+        + Pull, Run: nếu máy tính khác muốn sử dụng Container cần pull về (tất nhiên phải cài Docker Engine). Sau đó run container.
 
 ================================================
 * MYSQL
@@ -202,3 +207,42 @@ nền tảng này loại bỏ được nhiều quy trình thủ công về việ
             ~ Không có tính ràng buộc truy vấn (tự quản lý việc xác thực dữ liệu) ---> ko hẳn là nhược điểm nếu cẩn thận
             ~ Tốn bộ nhớ (lưu trữ dạng key-value, key bị lặp lại)
             ~ Có thể mất dữ liệu khi chưa hoàn thành bản lưu (mất thời gian lưu từ Ram vào ổ cứng)
+
+===============================
+* PYTHON là ngôn ngữ lập trình đa kế thừa (con - cha - ông)
+
+===============================
+* KAFKA
+    - LÝ DO CHỌN KAFKA
+        + Khả năng mở rộng: Kiến trúc phân tán của Kafka cho phép khả năng mở rộng theo chiều ngang đáng kể.
+        + Hiệu suất: Kafka rất nhanh! Nó có thể xử lý hàng triệu tin nhắn mỗi giây với tài nguyên tương đối khiêm tốn.
+        + Tính linh hoạt: Được thiết kế để giao tiếp với nhiều hệ thống khác nhau, Kafka có các API hữu ích, trực quan.
+        + Tính khả dụng: Kafka mang lại tính khả dụng cao thông qua cân bằng tải và sao chép dữ liệu.
+        + Cộng đồng: Là một phần của Apache Software Foundation, Kafka có một hệ sinh thái và cộng đồng phong phú.
+        + Danh tiếng mạnh mẽ: Kafka được sử dụng bởi các tổ chức nổi tiếng hàng đầu, bao gồm không chỉ LinkedIn
+        mà còn Netflix, Twitter, Spotify, Pinterest, Airbnb, Uber và nhiều tổ chức khác.
+
+    - Kafka Cluster:
+        + Là tập hợp của nhiều máy chủ
+        + 1 cluster bao gồm nhiều broker. Mỗi broker là 1 máy chủ độc lập với nhau để quản lí các message của topic
+        + Nếu 1 broker bị lỗi, các broker khác vẫn tiếp tục hoạt động
+        + Cung cấp tính năng tự động tăng cường, bảo mật, quản lí, giám sát dữ liệu trong môi trường phức tạp dễ dàng hơn
+
+===============================
+* Multithread vs multiprocess
+
+    + Chỉ có thể có một luồng chạy vào bất kỳ thời điểm nào trong một quy trình python.
+    + Đa xử lý là song song. Đa luồng là đồng thời.
+    + Đa xử lý là để tăng tốc độ. Đa luồng là để ẩn độ trễ.
+    + Đa xử lý là tốt nhất cho tính toán. Đa luồng là tốt nhất cho IO
+        ~ hoạt động IO nhanh: đọc ghi dữ liệu từ ổ đĩa, thực hiện request HTTP, tương tác database
+        ~ hoạt động IO chậm: truy cập bộ nhớ RAM, phép tính thực hiện trên CPU
+    + Nếu bạn có các tác vụ nặng với CPU, hãy sử dụng đa xử lý với n_process = n_cores và không bao giờ hơn thế nữa.
+    + Nếu bạn có các tác vụ nặng IO, hãy sử dụng đa luồng với n_threads = m * n_coresmột msố lớn hơn 1 mà bạn có thể
+     tự điều chỉnh. Hãy thử nhiều giá trị và chọn một giá trị có tốc độ tốt nhất vì không có quy tắc chung
+
+
+===============================
+* REDIS:
+    - là (REmote Dictionary Server) 1 mã nguồn mở thường lưu trữ các dữ liệu có cầu trúc, lưu dưới dạng Key-Value
+    - Hỗ trợ nhiều cấu trúc cơ bản: hash, list, set, string,... tất cả lưu trữ trên RAM nên tốc độ đọc ghi rất nhanh
