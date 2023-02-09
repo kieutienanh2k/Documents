@@ -186,9 +186,10 @@ nền tảng này loại bỏ được nhiều quy trình thủ công về việ
             ~ Linh hoạt và dễ dùng
             ~ Hiệu năng cao (đáp ứng với tốc độ cao, xử lý nhiều dữ liệu)
             ~ Độ bảo mật cao
-            ~ Sử dụng phù hợp với cấu trúc dạng bảng và hàng
+            ~ Hỗ trợ nhiều chức năng SQL
 
         + MongoDb:
+            ~ Dễ mở rộng
             ~ Sử dụng khi khó xác định trước cấu trúc
             ~ Mô hình dữ liệu phong phú, linh hoạt hơn (Json)
             ~ Dung lượng và tốc độ lưu trữ tốt hơn, mang lại hiệu quả và độ tin cậy cao hơn
@@ -203,10 +204,11 @@ nền tảng này loại bỏ được nhiều quy trình thủ công về việ
             ~ Dữ liệu tăng lên có thể làm tốc độ chậm so với các hệ quản trị cơ sở dữ liệu khác
 
         + Mongodb:
+            ~ Không có lệnh Join nên truy vấn giảm
             ~ Học cú pháp truy vấn
-            ~ Không có tính ràng buộc truy vấn (tự quản lý việc xác thực dữ liệu) ---> ko hẳn là nhược điểm nếu cẩn thận
-            ~ Tốn bộ nhớ (lưu trữ dạng key-value, key bị lặp lại)
-            ~ Có thể mất dữ liệu khi chưa hoàn thành bản lưu (mất thời gian lưu từ Ram vào ổ cứng)
+            ~ Không có tính ràng buộc truy vấn (tự quản lý việc xác thực dữ liệu nên dễ bị làm sai dữ liệu)
+                ---> ko hẳn là nhược điểm nếu cẩn thận
+            ~ Tốn bộ nhớ (lưu trữ dạng key-value, key bị lặp lại, ko có Join nên lưu thêm dữ liệu vào các record)
 
 ===============================
 * PYTHON là ngôn ngữ lập trình đa kế thừa (con - cha - ông)
