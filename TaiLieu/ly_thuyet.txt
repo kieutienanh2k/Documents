@@ -212,6 +212,18 @@ nền tảng này loại bỏ được nhiều quy trình thủ công về việ
 
 ===============================
 * PYTHON là ngôn ngữ lập trình đa kế thừa (con - cha - ông)
+    - Nguyên lý cơ bản:
+        + Tính đóng gói: dữ liệu và phương thức được đóng thành 1 class thể hiện 1 nhóm chức năng của lớp đó. Che giấu
+        thông tin qua các kiểu: public, protected(giống public), private (có 2 __ ở đầu phương thức)
+
+        + Tính kế thừa: Con có thế kế thừa các thuộc tính và phương thức của cha--> ông mà ko cần khai báo lại
+
+        + Tính trừu tượng: (abstraction) con bắt buộc kế thừa lại phương thức lớp cha (mặc dù lớp cha ko có body)
+
+        + Tính đa hình: các class sử dụng tên phương thức giống nhau, khi gọi phương thức thì mỗi class sẽ thể hiện riêng.
+
+    - Các kiểu dữ liệu: list, string, tuple, dictionary, set,...
+
 
 ===============================
 * KAFKA
