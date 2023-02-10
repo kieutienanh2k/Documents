@@ -189,7 +189,6 @@ nền tảng này loại bỏ được nhiều quy trình thủ công về việ
             ~ Hỗ trợ nhiều chức năng SQL
 
         + MongoDb:
-            ~ Dễ mở rộng
             ~ Sử dụng khi khó xác định trước cấu trúc
             ~ Mô hình dữ liệu phong phú, linh hoạt hơn (Json)
             ~ Dung lượng và tốc độ lưu trữ tốt hơn, mang lại hiệu quả và độ tin cậy cao hơn
@@ -205,7 +204,6 @@ nền tảng này loại bỏ được nhiều quy trình thủ công về việ
 
         + Mongodb:
             ~ Không có lệnh Join nên truy vấn giảm
-            ~ Học cú pháp truy vấn
             ~ Không có tính ràng buộc truy vấn (tự quản lý việc xác thực dữ liệu nên dễ bị làm sai dữ liệu)
                 ---> ko hẳn là nhược điểm nếu cẩn thận
             ~ Tốn bộ nhớ (lưu trữ dạng key-value, key bị lặp lại, ko có Join nên lưu thêm dữ liệu vào các record)
@@ -255,6 +253,14 @@ nền tảng này loại bỏ được nhiều quy trình thủ công về việ
     + Nếu bạn có các tác vụ nặng IO, hãy sử dụng đa luồng với n_threads = m * n_coresmột msố lớn hơn 1 mà bạn có thể
      tự điều chỉnh. Hãy thử nhiều giá trị và chọn một giá trị có tốc độ tốt nhất vì không có quy tắc chung
 
+    VD:
+        - Tác vụ nặng CPU: 4 core, tác vụ khoảng 100%
+            + multiprocess: mỗi core xử lý 100% --> nhanh gấp 4 lần
+            + multithread: mỗi core xử lý 25% --> ko nhanh hơn
+        - Tác vụ nặng IO:
+            + multithread: truy vấn request 16 url, tăng số luồng lên 16--> càng nhiều luồng càng nhanh (nhưng số
+            luồng ko được nhiều hơn số url)
+
 
 ===============================
 * REDIS:
@@ -263,9 +269,12 @@ nền tảng này loại bỏ được nhiều quy trình thủ công về việ
 
 =================================
 * SESSION:
-    - là 1 phiên làm việc dùng trong lập trình web có kết nối db. Giá trị được lưu trên 1 file server
-    - 1 Session bắt đầu khi client request lên server và tồn tại xuyên suốt trong quá trang web và chỉ kết thúc khi hết
-    thời gian hoặc khi đóng ứng dụng
+    - là 1 kĩ thuật trong lập trình máy chủ, được sử dụng để lưu trữ thông tin về trạng thái của 1 người dùng trong 1
+    phiên sử dụng trang web.
+    - Người dùng truy cập trang web --> máy chủ tạo 1 session để lưu trữ thông tin người dùng như tên đăng nhập,
+     giỏ hàng,...và kết thúc session khi đóng ứng dụng
+
+    ==> Giúp trải nghiệm tốt hơn
 
 * COOKIE:
     - Cookie là 1 đoạn văn ghi thông tin được tạo ra và lưu trên trình duyệt của máy người dùng.
@@ -274,3 +283,27 @@ nền tảng này loại bỏ được nhiều quy trình thủ công về việ
     - Khi user truy cập đến 1 trang web có sử dụng cookie, web server sẽ tự động gửi cookie đó đến máy tính user
     VD: khi đăng nhập FB, Gmail và lưu lại đăng nhập thì thông tin sẽ được lưu trên cookie giúp cho lần đăng nhập sau
     nhanh hơn. Nếu xóa thì lần đăng nhập sau sẽ phải thực hiện lại từ đầu sẽ rất tốn thời gian
+
+=================================
+* CLOUD
+
+    * Cloud Computing
+        - Là cách triển khai và sử dụng các dịch vụ máy tính, lưu trữ và các ứng dụng trên internet.
+        Tức là bạn có thể truy cập và sử dụng các tài nguyên máy tính như phần mềm, dữ liệu, và tài nguyên mạng mà không
+        cần phải cài đặt chúng trên máy tính cục bộ của mình. Thay vào đó , tài nguyên đó được lưu trữ và chạy từ các máy
+        chủ đám mây, và bạn có thể truy cập chúng thông qua Internet.
+        - VD:
+            + sử dụng dịch vụ Cloud Computing là khi sử dụng gg Drive để lưu trữ tài liệu của mình trực tuyến
+            Bạn có thể upload tài liệu lên đó và truy cập từ bất cứ máy tính nào có Internet, mà ko cần dùng máy tính
+            cục bộ của mình
+            + Khi sử dụng dịch vụ mail như Gmail, Outlook,.. bạn có thể gửi và nhận email từ bất kì máy tính nào kết
+            nối internet, mà ko cần dùng máy tính cục bộ của mình. Tất cả dữ liệu mail được lưu trữ trên máy chủ của
+            dịch vụ mail, và có thể truy cập bất kì lúc nào
+
+    * Clould Server
+        - Là 1 loại máy chủ đám mây trực tuyến, trong đó bạn có thể lưu trữ, chạy các ứng dụng của mình.
+        Bạn có thể tiết kiệm đáng kể trong việc quản lý và bảo trì máy chủ, vì nhà cung cấp dịch vụ đám mây sẽ giữ
+        và quản lý các máy chủ cho bạn
+        - VD:
+            + Bạn muốn chia sẻ tài liệu thay vì upload lên máy tính cục bộ và sau đó mới chia sẻ nó, thì bạn có thể
+            lưu trữ tài liệu trực tuyến trên 1 cloud server và chia sẻ nó 1 cách dễ dàng.
