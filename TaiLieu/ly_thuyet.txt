@@ -260,3 +260,17 @@ nền tảng này loại bỏ được nhiều quy trình thủ công về việ
 * REDIS:
     - là (REmote Dictionary Server) 1 mã nguồn mở thường lưu trữ các dữ liệu có cầu trúc, lưu dưới dạng Key-Value
     - Hỗ trợ nhiều cấu trúc cơ bản: hash, list, set, string,... tất cả lưu trữ trên RAM nên tốc độ đọc ghi rất nhanh
+
+=================================
+* SESSION:
+    - là 1 phiên làm việc dùng trong lập trình web có kết nối db. Giá trị được lưu trên 1 file server
+    - 1 Session bắt đầu khi client request lên server và tồn tại xuyên suốt trong quá trang web và chỉ kết thúc khi hết
+    thời gian hoặc khi đóng ứng dụng
+
+* COOKIE:
+    - Cookie là 1 đoạn văn ghi thông tin được tạo ra và lưu trên trình duyệt của máy người dùng.
+    - Được tạo ra khi truy cập 1 trang web, cookie sẽ ghi nhớ những thông tin như tên đăng nhập, mật khẩu,... lưu trên
+    máy tính người dùng
+    - Khi user truy cập đến 1 trang web có sử dụng cookie, web server sẽ tự động gửi cookie đó đến máy tính user
+    VD: khi đăng nhập FB, Gmail và lưu lại đăng nhập thì thông tin sẽ được lưu trên cookie giúp cho lần đăng nhập sau
+    nhanh hơn. Nếu xóa thì lần đăng nhập sau sẽ phải thực hiện lại từ đầu sẽ rất tốn thời gian
