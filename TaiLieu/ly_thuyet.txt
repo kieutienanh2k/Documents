@@ -25,6 +25,12 @@ TRONG 1 ĐƯỜNG TRUYỀN
     + SỬ dụng để truy cập các trang web hạn chế về mặt địa lý
     + Bật VPN sẽ kết nối mạng cục bộ, toàn bộ lưu lượng mạng lại luân chuyển qua kết nối an toàn VPN
 
+- VPS: (Virtual Private Server) nghĩa là máy chủ riêng ảo
+    + Là 1 loại máy chủ mà bạn có thể mua 1 phần của nó để sử dụng như là 1 máy chủ riêng của bạn
+    + Bạn có thể cài đặt, quản lí hệ điều hành, phần mềm và các dịch vụ mạng như là 1 máy chủ thực sự
+    + Tuy nhiên bạn sẽ chia sẻ tài nguyên với các máy chủ khác trên cùng 1 máy chủ vật lý.
+    + Là 1 lựa chọn tốt cho những người muốn có 1 máy chủ riêng mà không muốn phải chi trả giá cho 1 máy chủ đầy đủ.
+
 - nginx:
     - Là ứng dụng web server
     - Theo truyền thống thì khi gửi request mở 1 trang web, trình duyệt sẽ liên lạc với máy chủ của trang web đó. Sau
