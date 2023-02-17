@@ -6,3 +6,14 @@
     - bash test.sh
 
 =====================================
+# Luồng xử lý tạo index mới
+- Tạo file esmaping nằm trong folder resources/es_mapping
+- Tạo file scripts/es_index_report_op.py thực hiện trỏ đến file resources/es_mapping cấu hình version cho ES
+- Chạy file scripts/es_index_report_op.py vừa tạo để khởi tạo index và tạo mới mapping
+- Vào project Montache thực hiện tạo mới file sync table đến index đó
+
+# Luồng update mapping field index mới
+- Thực hiện vào K9S tắt pod sync data từ mongo lên ES
+- Thực hiện xoá toàn bộ data của index muốn mapping field lại
+- Chạy lại file esmaping đã update lại type mapping nằm trong folder resources/es_mapping đã tạo mapping
+- Vào trong DB monstache ở Mongo thực hiện xoá đi 3 record thuộc 3 table được sync index của mình (ex: deal_report.index)
