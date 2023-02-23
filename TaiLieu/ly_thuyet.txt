@@ -313,3 +313,12 @@ nền tảng này loại bỏ được nhiều quy trình thủ công về việ
         - VD:
             + Bạn muốn chia sẻ tài liệu thay vì upload lên máy tính cục bộ và sau đó mới chia sẻ nó, thì bạn có thể
             lưu trữ tài liệu trực tuyến trên 1 cloud server và chia sẻ nó 1 cách dễ dàng.
+
+    * 1 số khái niệm:
+        - Iaas (Infrastructure as a Service):
+            + Là mô hình điện toán đám mây (Cloud Computing) trong đó nhà cung cấp cloud cung cấp cho user quyền truy
+             cập vào các tài nguyên cơ bản của hạ tầng máy chủ (bao gồm máy chủ ảo, mạng, lưutrữ
+             và các thành phần hệ thống khác)
+            + Người dùng có thể thuê tài nguyên này để triển khai và quản lý các ứng dụng và dịch vụ của riêng mình
+            trên cloud thay vì tự cài đặt (các dịch vụ Iaas thường tính phí theo giờ, ngày sử dụng tài nguyên,...)
+            + 1 số ví dụ về nhà cung cấp Iaas: AWS, Microsoft Azure, Google Cloud Platform, và IBM Cloud
