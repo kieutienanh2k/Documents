@@ -17,3 +17,18 @@
 - Thực hiện xoá toàn bộ data của index muốn mapping field lại
 - Chạy lại file esmaping đã update lại type mapping nằm trong folder resources/es_mapping đã tạo mapping
 - Vào trong DB monstache ở Mongo thực hiện xoá đi 3 record thuộc 3 table được sync index của mình (ex: deal_report.index)
+
+=====================================
+@staticmethod
+def utf8_to_ascii(text):
+    if text is None:
+        return ''
+    output = text
+    for regex, replace in patterns.items():
+        output = re.sub(regex, replace, output)
+        # deal with upper case
+        output = re.sub(regex.upper(), replace.upper(), output)
+    return output
+
+keywords = utf8_to_ascii(keywords).lower()
+keywords = re.sub(r"([\.\*\+\?\^\$\{\}\(\)\|\[\]])", r"\\\1", keywords)
