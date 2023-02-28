@@ -7,7 +7,7 @@ toàn cho người dùng. Có IP riêng và 1 cổng cố định
     + Bảo mật riêng tư quyền truy cập Internet
     + Tiếp cận, truy cập những nguồn dữ liệu bị chặn
 
-- Băng thông là được sử dụng để truyền tải dữ liệu có sẵn trong 1 giây. Cũng có thể hiểu là TỐC ĐỘ TRUYỀN TẢI DỮ LIỆU
+- Băng thông là khả năng truyền tải dữ liệu có sẵn trong 1 giây. Cũng có thể hiểu là TỐC ĐỘ TRUYỀN TẢI DỮ LIỆU
 TRONG 1 ĐƯỜNG TRUYỀN
     + Mô tả dữ liệu lớn nhất mà người truy cập có thể tải xuống hoặc đăng lên giữa các website trên máy tính trong 1
     thời gian nhất định
@@ -248,6 +248,14 @@ nền tảng này loại bỏ được nhiều quy trình thủ công về việ
 
 ===============================
 * Multithread vs multiprocess
+
+    - Multi thread:
+        + Là kĩ thuật chia chương trình thành nhiều luồng (threads), mỗi luồng 1 tác vụ riêng.
+        + Các luồng chia sẻ bộ nhớ và tài nguyên nên sử dụng ít bộ nhớ hơn MultiProcess, và truy cập nhanh hơn đến các tài nguyên
+    - Multi process:
+        + Là kĩ thuật chia chương trình thành nhiều tiến trình (processes), mỗi process thực hiện tác vụ riêng.
+        + Các process hoạt động độc lập vs nhau và có thể chia sẻ tài nguyên của hệ thống.
+        + Cho phép chạy trên nhiều CPU hoặc máy tính khác nhau, và sử dụng nhiều bộ nhớ hơn MultiThread
 
     + Chỉ có thể có một luồng chạy vào bất kỳ thời điểm nào trong một quy trình python.
     + Đa xử lý là song song. Đa luồng là đồng thời.
