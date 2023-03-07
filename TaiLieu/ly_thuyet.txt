@@ -228,6 +228,10 @@ nền tảng này loại bỏ được nhiều quy trình thủ công về việ
 
     - Các kiểu dữ liệu: list, string, tuple, dictionary, set,...
 
+    - Decorator:
+        + Singleton: trong quá trình thực thi chương trình, thì class chỉ đc tạo ra 1 object instance (Sau khi tạo sẽ
+        được lưu trong 1 dictionary)
+
 
 ===============================
 * KAFKA
@@ -252,14 +256,17 @@ nền tảng này loại bỏ được nhiều quy trình thủ công về việ
     - Multi thread:
         + Là kĩ thuật chia chương trình thành nhiều luồng (threads), mỗi luồng 1 tác vụ riêng.
         + Các luồng chia sẻ bộ nhớ và tài nguyên nên sử dụng ít bộ nhớ hơn MultiProcess, và truy cập nhanh hơn đến các tài nguyên
+        VD: Chạy nhiều ứng dụng cùng 1 lúc
     - Multi process:
         + Là kĩ thuật chia chương trình thành nhiều tiến trình (processes), mỗi process thực hiện tác vụ riêng.
         + Các process hoạt động độc lập vs nhau và có thể chia sẻ tài nguyên của hệ thống.
         + Cho phép chạy trên nhiều CPU hoặc máy tính khác nhau, và sử dụng nhiều bộ nhớ hơn MultiThread
+        VD: Chạy trình thu thập dữ liệu web trên 1 cụm
 
     + Chỉ có thể có một luồng chạy vào bất kỳ thời điểm nào trong một quy trình python.
-    + Đa xử lý là song song. Đa luồng là đồng thời.
-    + Đa xử lý là để tăng tốc độ. Đa luồng là để ẩn độ trễ.
+    + Đa xử lý là song song (xử lý cùng 1 lúc)
+    + Đa luồng là đồng thời(ko xử lý cùng lúc kĩ thuật giảm thời gian phản hồi của hệ thống).
+    + Đa xử lý là làm nhiều việc cùng lúc để tăng tốc độ. Đa luồng là để ẩn độ trễ.
     + Đa xử lý là tốt nhất cho tính toán. Đa luồng là tốt nhất cho IO
         ~ hoạt động IO nhanh: đọc ghi dữ liệu từ ổ đĩa, thực hiện request HTTP, tương tác database
         ~ hoạt động IO chậm: truy cập bộ nhớ RAM, phép tính thực hiện trên CPU
@@ -324,7 +331,7 @@ nền tảng này loại bỏ được nhiều quy trình thủ công về việ
 
     * 1 số khái niệm:
         - Iaas (Infrastructure as a Service):
-            + Là mô hình điện toán đám mây (Cloud Computing) trong đó nhà cung cấp cloud cung cấp cho user quyền truy
+            + Là mô hình điện tAWoán đám mây (Cloud Computing) trong đó nhà cung cấp cloud cung cấp cho user quyền truy
              cập vào các tài nguyên cơ bản của hạ tầng máy chủ (bao gồm máy chủ ảo, mạng, lưutrữ
              và các thành phần hệ thống khác)
             + Người dùng có thể thuê tài nguyên này để triển khai và quản lý các ứng dụng và dịch vụ của riêng mình
